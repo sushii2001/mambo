@@ -1,0 +1,10 @@
+services:
+  mambo:
+    build: .
+    image: mambo:local
+    container_name: mambo-local
+    restart: unless-stopped
+    environment:
+      - DISCORD_TOKEN=${DISCORD_TOKEN}
+    volumes:
+      - ./logs:/app/logs
