@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 
 import os
+import sys
 from dotenv import load_dotenv
 import discord
 from discord.ext import commands
 import logging
+
+# Load project envs
+load_dotenv()
+DISCORD_TOKEN = os.environ["DISCORD_TOKEN"]
 
 # Define project paths
 PROJ_SRC_PATH = os.path.dirname(os.path.abspath(__file__))
@@ -12,9 +17,9 @@ PROJ_ROOT_PATH = f"{PROJ_SRC_PATH}/../"
 PROJ_LOG_PATH = f"{PROJ_ROOT_PATH}/logs"
 DISCORD_LOG_PATH = f"{PROJ_LOG_PATH}/discord.log"
 
-# Load project envs
-load_dotenv()
-DISCORD_TOKEN = os.environ["DISCORD_TOKEN"]
+# Append project repo into python module for relative imports
+sys.path.append(PROJ_SRC_PATH)
+from webserver import keep_alive
 
 # Initialization
 os.makedirs(PROJ_LOG_PATH, exist_ok=True)
@@ -117,6 +122,7 @@ async def poll(ctx, *, question):
 
 def main():
     try:
+        keep_alive()
         bot.run(DISCORD_TOKEN, log_handler=log_handler, log_level=LOGGING_LEVEL)
     except KeyboardInterrupt:
         logger.debug(f"Bot stopped manually.")
