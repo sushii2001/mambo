@@ -6,5 +6,7 @@ services:
     restart: unless-stopped
     environment:
       - DISCORD_TOKEN=${DISCORD_TOKEN}
+      - WEB_HOST=${WEB_HOST}
+      - WEB_PORT=${WEB_PORT}
     volumes:
       - ./logs:/app/logs
