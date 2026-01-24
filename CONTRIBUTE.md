@@ -3,6 +3,7 @@ Guide on setting up development environment and contributing to the project.
 
 # Prerequisite
 - Initial steps require to setup before getting started
+- This guide assumes using linux/WSL setup
 
 ## Discord developer portal
 - Sign up [here](https://discord.com/developers)
@@ -21,12 +22,16 @@ Guide on setting up development environment and contributing to the project.
 - Github [link](https://github.com/sushii2001/mambo.git)
 - Make a copy of `.env_sample` to `.env`
 
-## Python setup
+## Tools/Libraries setup
 - Install Python3
 - (Optional) Install `venv` with pip from Python for package management
 - Install Python packages running:
     ```bash
     pip install -r requirements.txt
+    ```
+- Install FFmpeg for audio input
+    ```bash
+    sudo apt install ffmpeg
     ```
 
 # Building and Running locally

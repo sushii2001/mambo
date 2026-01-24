@@ -6,3 +6,4 @@
 
 # Features
  - [ ] Find food for user
+ - [x] Have a big clock ring every hour
