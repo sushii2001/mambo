@@ -1,52 +1,40 @@
 # Contribute to the project
 Guide on setting up development environment and contributing to the project.
 
-# Prerequisite
-- Initial steps require to setup before getting started
-- This guide assumes using linux/WSL setup
+# Project structure
+Overview of the whats and hows work from where. This guide should help with applying change.
 
-## Discord developer portal
-- Sign up [here](https://discord.com/developers)
-- Create your bot
-- Set OAuth2:
-    - application.commands
-    - bot
-    - Administrator
-    - // Copy URL link and invite to your server
-- Enable Intents:
-    - Server Members
-    - Message Content
-    - Presence
+## Project root
+All local/prodcution devlopment control `./Makefile`
 
-## Clone the Project
-- Github [link](https://github.com/sushii2001/mambo.git)
-- Make a copy of `.env_sample` to `.env`
+## Project environment
+All environment variables and management can be found in `src/utils/`
 
-## Tools/Libraries setup
-- Install Python3
-- (Optional) Install `venv` with pip from Python for package management
-- Install Python packages running:
-    ```bash
-    pip install -r requirements.txt
-    ```
-- Install FFmpeg for audio input
-    ```bash
-    sudo apt install ffmpeg
-    ```
+## Bot source code
+All functionalites of the bot can be found in `src/bot`
 
-# Building and Running locally
-Checkout the avaliable commands in the `Makefile`
+### Initialization
+Creating the bot is configured at `src/bot/client.py`
 
-## Build
-Run
-```bash
-make start
+### Custom handlers
+Custom handlers are found at `src/bot/handlers.py`
+
+This is where all the event related handlers are implemented. E.g. `on_message`, `on_member_join`, `on_error`, etc.
+
+### Custom commands
+Custom commands are found at `src/bot/commands.py`
+
+To add *prefix* command use:
+```python
+    @commands.command(name=COMMAND_NAME)
+    async def COMMAND_NAME(self, ctx):
+        """Custom prefix command description. Usage !CMD"""
 ```
-
-## Test
-Run
-```bash
-make test
+To add *slash* command use:
+```python
+    @app_commands.command(name=COMMAND_NAME, description="")
+    async def COMMAND_NAME(self, interaction: discord.Interaction):
+        """Custom slash command description. Usage /CMD"""
 ```
 
 # Version control guide (Git)
