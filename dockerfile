@@ -27,8 +27,8 @@ RUN mkdir -p /app/logs
 ENV PYTHONUNBUFFERED=1
 
 # Health check (optional but recommended)
-HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
-  CMD  curl --fail http://localhost:8080 || exit 1
+HEALTHCHECK --interval=30s --timeout=3s \
+  CMD python3 -c 'import urllib.request; urllib.request.urlopen("http://localhost:8080/").getcode()' || exit 1
 
 # Run the bot
 CMD ["python3", "-m", "src"]
