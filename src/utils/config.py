@@ -27,7 +27,7 @@ class Config:
     # Big clock feature timing
     # HOUR_INTERVAL controls scheduler cadence.
     # BIG_CLOCK_PERIOD controls max playback time per trigger.
-    HOUR_INTERVAL = 60
+    HOUR_INTERVAL = 3600
     BIG_CLOCK_PERIOD = 9
 
     @classmethod
