@@ -18,7 +18,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application code
 COPY src/ ./src/
-COPY asset/ ./asset/
+COPY assets/ ./assets/
 
 # Create logs directory
 RUN mkdir -p /app/logs
@@ -28,7 +28,7 @@ ENV PYTHONUNBUFFERED=1
 
 # Health check (optional but recommended)
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
-  CMD pgrep -f "python.*main.py" || exit 1
+  CMD pgrep -f "python.*-m src" || exit 1
 
 # Run the bot
-CMD ["python3", "./src/main.py"]
+CMD ["python3", "-m", "src"]

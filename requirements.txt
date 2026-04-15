@@ -1,4 +1,8 @@
-discord.py
+discord.py[voice]
 dotenv
 flask
 pynacl
+
+# dev
+pytest
+pytest-asyncio
