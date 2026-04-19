@@ -8,6 +8,8 @@ services:
       - DISCORD_TOKEN=${DISCORD_TOKEN}
       - WEB_HOST=${WEB_HOST}
       - WEB_PORT=${WEB_PORT}
+      - LOGGING_LEVEL=${LOGGING_LEVEL}
+      - PYTHONUNBUFFERED=1
     volumes:
       - ./logs:/app/logs
 
